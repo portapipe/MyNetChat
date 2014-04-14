@@ -24,19 +24,19 @@ public class NetChat extends Command implements Listener
         this.pasta.getProxy().getPluginManager().registerCommand(pasta, this);
         this.pasta.getProxy().getPluginManager().registerListener(pasta, this);
     }
-
+    
     @Override
     public void execute(CommandSender s, String[] args) {
         if (!input.contains(s.getName())) {
             this.input.add(s.getName());
-            s.sendMessage(new TextComponent(ChatColor.DARK_RED + "Cross Server Global Chat disabled."));
+            s.sendMessage(new TextComponent(ChatColor.DARK_RED + "Chat Server Abilitata"));
         } else {
             input.remove(s.getName());
-            s.sendMessage(new TextComponent(ChatColor.DARK_GREEN + "Cross Server Global Chat enabled."));
+            s.sendMessage(new TextComponent(ChatColor.DARK_GREEN + "Chat Network Abilitata"));
         }
     }
-
-
+    
+    
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerChat(ChatEvent e){
         if(e.getSender() instanceof ProxiedPlayer){
@@ -52,7 +52,7 @@ public class NetChat extends Command implements Listener
             }
         }
     }
-
+    
     private void sendMessage(ProxiedPlayer s, ProxiedPlayer pl, String message) {
         pl.sendMessage(new TextComponent((ChatColor.DARK_RED + "[" + ChatColor.BLUE + s.getServer().getInfo().getName() + ChatColor.DARK_RED + "] " + ChatColor.GOLD + s.getName() + ChatColor.RED + ": " + message)));
     }
